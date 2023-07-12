@@ -8,6 +8,6 @@
     <title>home</title>
 </head>
 <body>
-Home 페이지1
+Home 페이지
 </body>
 </html>
