@@ -33,8 +33,8 @@ public class DispatcherServlet extends HttpServlet {
                     new HandlerKey(RequestMethod.valueOf(request.getMethod()), request.getRequestURI()));
             String viewName = handler.handleRequest(request, response);
 
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher(viewName);
-            requestDispatcher.forward(request, response);
+//            RequestDispatcher requestDispatcher = request.getRequestDispatcher(viewName);
+//            requestDispatcher.forward(request, response);
         } catch (Exception e) {
             log.error("exception occurred: [{}]", e.getMessage(), e);
             throw new ServletException(e);
