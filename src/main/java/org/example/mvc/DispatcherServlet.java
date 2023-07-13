@@ -23,7 +23,6 @@ import java.util.List;
 @WebServlet("/")
 public class DispatcherServlet extends HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(DispatcherServlet.class);
-
     private RequestMappingHandlerMapping requestMappingHandlerMapping;
     private List<ViewResolver> viewResolvers;
 
