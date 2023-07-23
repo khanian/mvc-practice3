@@ -20,7 +20,7 @@ public class RequestMappingHandlerMapping implements HandlerMapping{
     }
 
     public Controller findHandler(HandlerKey handlerKey) {
-        log.info("findHandler. key = {}", handlerKey);
+//        log.info("findHandler. key = {}", handlerKey);
         return mappings.get(handlerKey);
     }
 }

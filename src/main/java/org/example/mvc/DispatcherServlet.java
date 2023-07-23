@@ -42,7 +42,7 @@ public class DispatcherServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         log.info("[DispatcherServlet] service started.");
         try {
-            Controller handler = rmhm.findHandler(
+            Object handler = hm.findHandler(
                     new HandlerKey(RequestMethod.valueOf(request.getMethod()), request.getRequestURI()));
 //            String viewName = handler.handleRequest(request, response);
 
