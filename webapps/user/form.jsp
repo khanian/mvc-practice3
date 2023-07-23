@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="kr">
 <head>
-<%--    <link rel="icon" href="data:,">--%>
+    <link rel="icon" href="data:,">
     <meta charset="UTF-8">
     <title>form</title>
 </head>

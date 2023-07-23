@@ -10,7 +10,7 @@ public class User {
     private final String name;
 
     public User(String userId, String name) {
-        log.info("userId={}, name={}", userId,name);
+//        log.info("userId={}, name={}", userId,name);
         this.userId = userId;
         this.name = name;
     }
