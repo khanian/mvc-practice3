@@ -23,14 +23,16 @@ import java.util.List;
 @WebServlet("/")
 public class DispatcherServlet extends HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(DispatcherServlet.class);
-    private RequestMappingHandlerMapping rmhm;
+    private HandlerMapping hm;
     private List<HandlerAdapter> handlerAdapters;
     private List<ViewResolver> viewResolvers;
 
     @Override
     public void init() throws ServletException {
-        rmhm = new RequestMappingHandlerMapping();
+        RequestMappingHandlerMapping rmhm = new RequestMappingHandlerMapping();
         rmhm.init();
+
+        hm = rmhm;
 
         handlerAdapters = List.of(new SimpleControllerHandlerAdapter());
         viewResolvers = Collections.singletonList(new JspViewResolver());
