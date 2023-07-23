@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html lang="kr">
 <head>
+    <link rel="icon" href="data:,">
     <meta charset="UTF-8">
     <title>home</title>
 </head>

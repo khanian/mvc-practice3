@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -23,13 +22,13 @@ import java.util.List;
 @WebServlet("/")
 public class DispatcherServlet extends HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(DispatcherServlet.class);
-    private RequestMappingHandlerMapping requestMappingHandlerMapping;
+    private RequestMappingHandlerMapping rmhm;
     private List<ViewResolver> viewResolvers;
 
     @Override
     public void init() throws ServletException {
-        requestMappingHandlerMapping = new RequestMappingHandlerMapping();
-        requestMappingHandlerMapping.init();
+        rmhm = new RequestMappingHandlerMapping();
+        rmhm.init();
 
         viewResolvers = Collections.singletonList(new JspViewResolver());
     }
@@ -38,11 +37,13 @@ public class DispatcherServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         log.info("[DispatcherServlet] service started.");
         try {
-            Controller handler = requestMappingHandlerMapping.findHandler(
+            Controller handler = rmhm.findHandler(
                     new HandlerKey(RequestMethod.valueOf(request.getMethod()), request.getRequestURI()));
             String viewName = handler.handleRequest(request, response);
 
             for (ViewResolver viewResolver : viewResolvers) {
+                log.info("viewResolver.resolveView(viewName) : [{}}", viewResolver.resolveView(viewName));
+                log.info("viewName : [{}]", viewName);
                 View view = viewResolver.resolveView(viewName);
                 view.render(new HashMap<>(), request, response);
             }
